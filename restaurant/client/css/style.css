@@ -1,38 +1,76 @@
 .drag-obj-container {
     height: 900px;
 }
-.drag-obj{
-  background: #00796b;
-  padding: 10px;
-  height: 100px;
-  color: #fff;
-  box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.5);
-  -webkit-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.5);
-  -moz-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.5);
+
+.drag-obj {
+    background: #00796b;
+    padding: 10px;
+    height: 100px;
+    color: #fff;
+    box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.5);
 }
-.orange-darken{
-  background-color: #ef6c00;
+
+.orange-darken {
+    background-color: #ef6c00;
 }
+
 @-webkit-keyframes highlight-color {
-    from {background-color: #ffa726;}
-    to {background-color: #fff;}
+    from {
+        background-color: #ffa726;
+    }
+    to {
+        background-color: #fff;
+    }
 }
-.flash-highlight{
-  animation: highlight-color;
-  animation-duration: 2s;
+
+.flash-highlight {
+    animation: highlight-color;
+    animation-duration: 2s;
 }
-.btn-cus{
-  background: none;
-  border: 2px solid #fff;
-  color: #fff;
-  transition: all .5s ease-in-out;
+
+.btn-cus {
+    background: none;
+    border: 2px solid #fff;
+    color: #fff;
+    transition: all .5s ease-in-out;
 }
-.btn-cus:hover{
-  border: 2px solid #c6ff00;
-  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
-  -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
-  -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
+
+ul > li.btn-category {
+    display: inline;
+    background: #00796b;
+    color: #fff;
+    margin: 10px;
+    padding: 10px;
+    transition: all .5s ease-in-out;
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.3);
+
 }
+
+ul > li.btn-category:hover {
+    background: #cddc39;
+}
+ul > li.btn-category.active{
+    background: #cddc39;
+}
+ul > li.btn-category a {
+    padding: 20px;
+    text-decoration: none;
+    color: #fff;
+}
+
+.btn-cus:hover {
+    border: 2px solid #c6ff00;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+}
+
 .product-dev {
     padding-top: 9px;
     width: 150px;
@@ -42,12 +80,13 @@
     position: relative;
     float: left;
     margin: 5px;
-  /*  border-radius: 10px 10px 10px 10px;
-    -moz-border-radius: 10px 10px 10px 10px;
-    -webkit-border-radius: 10px 10px 10px 10px;
-    border: 0px solid #000000;*/
+    /*  border-radius: 10px 10px 10px 10px;
+      -moz-border-radius: 10px 10px 10px 10px;
+      -webkit-border-radius: 10px 10px 10px 10px;
+      border: 0px solid #000000;*/
 }
-.product-price{
+
+.product-price {
     float: right;
     font-size: 15px;
     color: yellow;

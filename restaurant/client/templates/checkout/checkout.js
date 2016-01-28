@@ -123,7 +123,7 @@ Template.restaurant_checkout.helpers({
     },
     units: function () {
         return ReactiveMethod.call('findRecords',
-            'Restaurant.Collection.Units', {}, {});
+            'Restaurant.Collection.Units', {}, {sort:{name:1}});
     },
     products: function () {
         var selector = {};

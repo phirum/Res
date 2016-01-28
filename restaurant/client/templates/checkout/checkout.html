@@ -1,5 +1,5 @@
 <template name="restaurant_checkout">
-    <div class="wrap-content" style="padding: 5px;">
+    <div class="wrap-content" style="padding: 5px; overflow: hidden">
         <div class="row">
             <div class="col-md-7">
                 <div class="panel panel-default">
@@ -8,38 +8,58 @@
                     </div>
                     <div class="panel-body">
                         <div class="row">
-                            <div class="col-lg-2" style="text-align: center">
-                                <div class="row"><h5>Unit</h5></div>
-                                <div class="row">
-                                    <div style="width: 100px; margin: 2px;"
-                                         class="btn {{#if thatUnit "All"}} btn-success{{else}} btn-primary{{/if}} all-unit">
-                                        All
-                                    </div>
+                            <!--<div class="col-lg-2" style="text-align: center">
 
-                                </div>
-                                {{#each units}}
-                                    <div class="row">
-                                        <div style="width: 100px; margin: 2px;"
-                                             class="btn {{#if thatUnit _id}} btn-success{{else}} btn-primary{{/if}} unit">{{name}}</div>
-                                    </div>
-                                {{/each}}
-                            </div>
-                            <div class="col-lg-10">
-                                <ul id="myTabs" class="nav nav-tabs" role="tablist">
+                            </div>-->
+                            <div class="col-lg-12">
+                              <ul>
                                     {{#each categories}}
-                                        <li role="presentation category">
-                                            <a href="#{{_id}}" id="home-tab" role="tab" data-toggle="tab"
+                                        <li role="presentation" class="category btn-category">
+                                            <a role="tab" data-toggle="tab"
                                                aria-controls="home" aria-expanded="true">
                                                 {{name}}
                                             </a>
                                         </li>
                                     {{/each}}
                                 </ul>
-                                <div class="row" style="overflow: scroll;height: 70%;">
+                                <div class="row">
+                                    <ul id="myTabs" class="nav nav-tabs" role="tablist">
+                                        <li role="presentation" class="all-unit">
+                                            <a role="tab" data-toggle="tab"
+                                               aria-controls="home" aria-expanded="true">
+                                                All
+                                            </a>
+                                        </li>
+                                        {{#each units}}
+                                            <li role="presentation" class="unit">
+                                                <a role="tab" data-toggle="tab"
+                                                   aria-controls="home" aria-expanded="true">
+                                                    {{name}}
+                                                </a>
+                                            </li>
+                                        {{/each}}
+                                    </ul>
+                                </div>
+                                <div class="table-responsive">
                                     {{#each products}}
                                         {{> restaurant_showProduct}}
                                     {{/each}}
                                 </div>
+                                <!-- <div class="row"><h5>Unit</h5></div>
+                                <div class="row">
+                                    <div style="width: 100px; margin: 2px;"
+                                         class="btn {{#if thatUnit "All"}} btn-success{{else}} btn-primary{{/if}} all-unit">
+                                        All
+                                    </div>
+                                </div>
+
+                                {{#each units}}
+                                    <div class="row">
+                                        <div style="width: 100px; margin: 2px;"
+                                             class="btn {{#if thatUnit _id}} btn-success{{else}} btn-primary{{/if}} unit">{{name}}</div>
+                                    </div>
+                                {{/each}}-->
+
                             </div>
                         </div>
 
@@ -124,7 +144,7 @@
                                 </div>
                             </div>
                         </form>
-                        <div class="table-responsive">
+                        <div class="table-responsive" style="overflow: hidden">
                             <table class="table table-responsive table-condensed table-hover table-bordered">
                                 <thead class="jumbotron">
                                 <tr>
@@ -334,9 +354,10 @@
                         </div>-->
                     </div>
                 </div>
-                <a href="/restaurant/tableView" class="btn btn-info" id="btn-to-table-view"><i
-                        class="fa fa-arrow-left"></i> Table View</a>
+
                 <div class="pull-right">
+                    <a href="/restaurant/tableView" class="btn btn-info" id="btn-to-table-view"><i
+                            class="fa fa-arrow-left"></i> Table View</a>
                     <!--  <div class="btn-group dropup">
                         <button type="button" class="btn btn-primary dropdown-toggle"
                                 data-toggle="dropdown"><i class="fa fa-undo"></i>&nbsp;Resume<span
