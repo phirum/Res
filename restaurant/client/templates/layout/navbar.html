@@ -1,24 +1,23 @@
 <template name="restaurant_navbar">
     <ul class="nav navbar-nav">
         <li class="{{isActiveRoute name='restaurant.home'}}"><a href="{{pathFor 'restaurant.home'}}">
-            <i class="fa fa-home"></i> Home
+            Home
         </a></li>
         <li class="{{isActiveRoute name='restaurant.checkout'}}">
-            <a href="{{pathFor 'restaurant.checkout'}}">
-                <i class="fa fa-money"></i> Sale </a>
+            <a href="{{pathFor 'restaurant.checkout'}}"> Sale </a>
         </li>
 
         {{#if noSeller}}
             <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                    <i class="fa fa-cogs"></i> Manage <span class="caret"></span>
+                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Data<span
+                        class="caret"></span>
                 </a>
                 <ul class="dropdown-menu" role="menu">
                     <li class="{{isActiveRoute name='restaurant.customer'}}"><a
                             href="{{pathFor 'restaurant.customer'}}">
                         Customer</a>
                     </li>
-                   <!-- <li class="{{isActiveRoute name='restaurant.supplier'}}"><a
+                    <!-- <li class="{{isActiveRoute name='restaurant.supplier'}}"><a
                             href="{{pathFor 'restaurant.supplier'}}">
                         Supplier</a>
                     </li>-->
@@ -41,7 +40,7 @@
                             href="{{pathFor 'restaurant.tableView'}}">
                         Table View</a>
                     </li>
-                   <!-- <li class="{{isActiveRoute name='restaurant.location'}}"><a
+                    <!-- <li class="{{isActiveRoute name='restaurant.location'}}"><a
                             href="{{pathFor 'restaurant.location'}}">
                         Location</a>
                     </li>
@@ -76,11 +75,18 @@
                             href="{{pathFor 'restaurant.promotionPercentage'}}">
                          Promotion Percentage</a>
                     </li>-->
+                    <li class="divider"></li>
+                    <li class="{{isActiveRoute name='restaurant.saleList'}}"><a
+                            href="{{pathFor 'restaurant.saleList'}}">
+                        Sale List
+                        <!--<span class="label label-danger">{{getPublishedCount 'owedSale'}}</span>-->
+                    </a>
+                    </li>
                 </ul>
             </li>
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                    <i class="fa fa-cogs"></i> Setting <span class="caret"></span>
+                    Setting <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu" role="menu">
                     <li class="{{isActiveRoute name='restaurant.exchangeRate'}}"><a
@@ -100,30 +106,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                    <i class="fa fa-eye"></i> View List
-                    <!--<span class="label label-danger">{{getPublishedCount 'owedSale'}}</span>-->
-                    <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu" role="menu">
-                    <!--<li class="{{isActiveRoute name='restaurant.stock'}}"><a href="{{pathFor 'restaurant.stock'}}">
-                        <i class="fa fa-eye"></i> Stock List</a>
-                    </li>-->
-                    <li class="{{isActiveRoute name='restaurant.saleList'}}"><a
-                            href="{{pathFor 'restaurant.saleList'}}">
-                        Sale List
-                        <!--<span class="label label-danger">{{getPublishedCount 'owedSale'}}</span>-->
-                    </a>
-                    </li>
-                  <!--  <li class="{{isActiveRoute name='restaurant.purchaseList'}}">
-                        <a href="{{pathFor 'restaurant.purchaseList'}}">
-                            Purchase List
-                            &lt;!&ndash;<span class="label label-danger">{{getPublishedCount 'owedSale'}}</span>&ndash;&gt;
-                        </a>
-                    </li>-->
-                </ul>
-            </li>
+
 
             <!--
             <li class="{{isActiveRoute name='restaurant.purchase'}}">
@@ -136,7 +119,7 @@
 
             <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                    <i class="fa fa-file-text"></i> Reports <span class="caret"></span>
+                    Reports <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu" role="menu">
                     <!--<li class="{{isActiveRoute name='restaurant.myCustomerReport'}}"><a
@@ -154,7 +137,7 @@
                             href="{{pathFor 'restaurant.saleDetailReport'}}">
                         <i class="fa fa-file-text"></i> Sale Items Detail</a>
                     </li>
-                   <!-- <li class="divider"></li>
+                    <!-- <li class="divider"></li>
                     <li class="{{isActiveRoute name='restaurant.purchaseReport'}}"><a
                             href="{{pathFor 'restaurant.purchaseReport'}}">
                         <i class="fa fa-file-text"></i> Purchase Summery</a>
@@ -163,7 +146,7 @@
                             href="{{pathFor 'restaurant.purchaseDetailReport'}}">
                         <i class="fa fa-file-text"></i> Purchase Items Detail</a>
                     </li>-->
-                <!--    <li class="divider"></li>
+                    <!--    <li class="divider"></li>
                     <li class="{{isActiveRoute name='restaurant.stockReport'}}"><a
                             href="{{pathFor 'restaurant.stockReport'}}">
                         <i class="fa fa-file-text"></i> Stock Balance</a>
@@ -173,7 +156,7 @@
                             href="{{pathFor 'restaurant.owedCustomerReport'}}">
                         <i class="fa fa-file-text"></i> Owed Customer</a>
                     </li>
-                   <!-- <li class="{{isActiveRoute name='restaurant.owesSupplierReport'}}"><a
+                    <!-- <li class="{{isActiveRoute name='restaurant.owesSupplierReport'}}"><a
                             href="{{pathFor 'restaurant.owesSupplierReport'}}">
                         <i class="fa fa-file-text"></i> Owes Supplier</a>
                     </li>-->

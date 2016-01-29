@@ -68,6 +68,7 @@ deps@1.0.9
 diff-sequence@1.0.1
 digilord:faker@1.0.7
 digilord:sugarjs@1.4.1
+dsyko:jquery-ui-touch-punch@1.2.4
 easy:search@2.0.4
 easysearch:components@2.0.4
 easysearch:core@2.0.3

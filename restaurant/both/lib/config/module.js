@@ -5,7 +5,7 @@ Module = typeof Module === 'undefined' ? {} : Module;
 Meteor.isClient && Template.registerHelper('Module', Module);
 
 Module.Restaurant = {
-    name: 'POS Restaurant System',
+    name: 'Restaurant',
     version: '0.0.1',
     summary: 'POS Restaurant System is used for Sale (Point of Sale) In the Restaurant.',
     roles: [
@@ -28,16 +28,9 @@ Module.Restaurant = {
             'Restaurant.Collection.UserStaffs',
             'Restaurant.Collection.Sales',
             'Restaurant.Collection.SaleDetails',
-            'Restaurant.Collection.Purchases,',
-            'Restaurant.Collection.PurchaseDetails',
-            'Restaurant.Collection.Promotions',
-            'Restaurant.Collection.PromotionPercentages',
-            'Restaurant.Collection.PromotionQuantities',
             'Restaurant.Collection.Payments',
-            'Restaurant.Collection.Locations',
-            'Restaurant.Collection.LocationSettings',
-            'Restaurant.Collection.LocationTransfers',
-            'Restaurant.Collection.FIFOInventory'
+            'Restaurant.Collection.Tables',
+            'Restaurant.Collection.TableLocations'
         ]
     }
 };

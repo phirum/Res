@@ -185,3 +185,5 @@ natestrauser:select2
 zimme:select2-bootstrap3-css
 sergeyt:typeahead
 mrt:jquery-ui
+fastclick
+dsyko:jquery-ui-touch-punch
