@@ -4,8 +4,8 @@
         <p>{{name}}</p>
     </div>-->
     <div class="product-dev">
-        <span class="product-price">{{price}}</span>
+        <span class="product-price">{{price}} {{baseCurrency.symbol}}</span>
         <img src="{{url}}" style="width:120px;height:120px;">
-        <p>{{name}}</p>
+        <p>{{name}} ({{_unit.name}})</p>
     </div>
 </template>

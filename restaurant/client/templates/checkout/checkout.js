@@ -1,4 +1,5 @@
-Session.setDefault('unitSession', null);
+Session.setDefault('unitSession', "All");
+Session.setDefault('categorySession', "All");
 var restaurantAddNoteTPL = Template.restaurant_addNote;
 Template.restaurant_checkout.onRendered(function () {
     Meteor.typeahead.inject();
@@ -19,6 +20,10 @@ Template.restaurant_checkout.onRendered(function () {
     }, 500);
 });
 Template.restaurant_checkout.helpers({
+    isAll: function () {
+        var categorySession = Session.get('categorySession');
+        return categorySession == "All";
+    },
     search: function (query, sync, callback) {
         Meteor.call('searchProduct', query, {}, function (err, res) {
             if (err) {
@@ -156,7 +161,7 @@ Template.restaurant_checkout.helpers({
     products: function () {
         var selector = {};
         var categoryId = Session.get('categorySession');
-        if (categoryId) {
+        if (categoryId && categoryId != "All") {
             selector.categoryId = categoryId;
         }
         var unitSession = Session.get('unitSession');
@@ -224,6 +229,9 @@ Template.restaurant_checkout.helpers({
     }
 });
 Template.restaurant_checkout.events({
+    'click .all-category': function () {
+        Session.set('categorySession', 'All');
+    },
     'keypress .pay-amount': function (evt) {
         var charCode = (evt.which) ? evt.which : evt.keyCode;
         return !(charCode > 31 && (charCode < 48 || charCode > 57));
@@ -450,6 +458,10 @@ Template.restaurant_checkout.events({
             if (er) alertify.error(er.message);
         });
     }
+});
+
+Template.restaurant_checkout.onDestroyed(function () {
+    Session.set('categorySession', "All");
 });
 
 Template.restaurant_showProduct.events({
