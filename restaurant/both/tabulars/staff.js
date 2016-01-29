@@ -21,7 +21,7 @@ Restaurant.TabularTable.Staffs = new Tabular.Table({
         {data: "phone", title: "Phone"},
         {data: "address", title: "Address"},
         {data: "status", title: "Status"},
-        {
+        /*{
             data: "_saleCount", title: "Has Sold",
             render: function (val, type, doc) {
                 return val == null ? 0 : val;
@@ -32,7 +32,7 @@ Restaurant.TabularTable.Staffs = new Tabular.Table({
             render: function (val, type, doc) {
                 return val == null ? 0 : val;
             }
-        }
+        }*/
 
     ],
     order: [['1', 'desc']],

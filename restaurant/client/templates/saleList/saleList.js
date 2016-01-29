@@ -3,7 +3,7 @@ var restaurantSaleShow = Template.restaurant_saleShow;
 
 
 restaurantSaleListTPL.onRendered(function () {
-    createNewAlertify(['saleShow'],{size:'lg'});
+    createNewAlertify(['saleShow'], {size: 'lg'});
 });
 
 restaurantSaleListTPL.helpers({
@@ -17,7 +17,30 @@ restaurantSaleListTPL.events({
         FlowRouter.go('restaurant.checkout');
     },
     'click .update': function (e, t) {
-        FlowRouter.go('restaurant.checkout', {saleId: this._id});
+        var id = this._id;
+        var total = this.total;
+        Meteor.call('findOneRecord', 'Restaurant.Collection.Sales', {_id: id}, {}, function (error, sale) {
+            if (error) {
+                alertify.error(error.message);
+            } else {
+                if (sale.status != "Unsaved") {
+                    alertify.confirm("Are you sure to Update the Order [" + id + "]? It have been checkout.")
+                        .set({
+                            onok: function (closeEvent) {
+                                Meteor.call('directUpdateSaleAndSaleDetailsToUnsaved', id,total, function (er, re) {
+                                    if (!er) {
+                                        FlowRouter.go('restaurant.checkout', {saleId: id});
+                                    }
+                                });
+                            },
+                            title: '<i class="fa fa-remove"></i> Delete Category'
+                        });
+                } else {
+                    FlowRouter.go('restaurant.checkout', {saleId: id});
+                }
+            }
+
+        });
     },
     'click .remove': function (e, t) {
         var id = this._id;

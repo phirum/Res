@@ -43,6 +43,11 @@ Meteor.methods({
     directUpdateSaleDetailsStatus: function (saleId) {
         Restaurant.Collection.SaleDetails.direct.update({saleId: saleId}, {$set: {status: "Saved"}}, {multi: true});
     },
+    directUpdateSaleAndSaleDetailsToUnsaved: function (saleId, total) {
+        Restaurant.Collection.Payments.direct.remove({saleId: saleId});
+        Restaurant.Collection.Sales.direct.update(saleId, {$set: {status: "Unsaved", owedAmount: total}});
+        Restaurant.Collection.SaleDetails.direct.update({saleId: saleId}, {$set: {status: "Unsaved"}}, {multi: true});
+    },
 
     updateToRetailSale: function (saleId) {
         Restaurant.Collection.SaleDetails.find({saleId: saleId}).forEach(function (sd) {
