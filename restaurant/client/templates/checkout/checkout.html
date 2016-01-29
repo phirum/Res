@@ -93,19 +93,19 @@
                     <div class="panel-body">
                         <form class="form-horizontal">
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="sale-id" class="col-sm-4 control-label">Date</label>
-                                        <div class="col-sm-8">
+                                        <label for="sale-id" class="col-sm-3 control-label">Date</label>
+                                        <div class="col-sm-9">
                                             <input type="text" class="form-control input-sm" id="sale-date" readonly
                                                    value="{{sale.saleDateFormatted}}">
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="staff-id" class="col-sm-4 control-label">Table</label>
-                                        <div class="col-sm-8">
+                                        <label for="staff-id" class="col-sm-3 control-label">Table</label>
+                                        <div class="col-sm-9">
                                             <select class="form-control input-sm" id="table-id">
                                                 {{#each tables}}
                                                     <option value="{{_id}}"
@@ -118,10 +118,10 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="staff-id" class="col-sm-4 control-label">Staff</label>
-                                        <div class="col-sm-8">
+                                        <label for="staff-id" class="col-sm-3 control-label">Staff</label>
+                                        <div class="col-sm-9">
                                             <select class="form-control input-sm" id="staff-id">
                                                 {{#each staffs}}
                                                     <option value="{{_id}}"
@@ -132,10 +132,10 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="customer-id" class="col-sm-4 control-label">Customer</label>
-                                        <div class="col-sm-8">
+                                        <label for="customer-id" class="col-sm-3 control-label">Customer</label>
+                                        <div class="col-sm-9">
                                             <select class="form-control input-sm" id="customer-id">
                                                 {{#each customers}}
                                                     <option value="{{_id}}"
