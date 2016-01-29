@@ -1,5 +1,6 @@
 Restaurant.TabularTable.Stocks = new Tabular.Table({
     name: "restaurantStockList",
+    responsive: true,
     collection: Restaurant.Collection.Products,
     columns: [
         {data: "_id", title: "ID"},

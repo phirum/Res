@@ -1,5 +1,6 @@
 Restaurant.TabularTable.Suppliers = new Tabular.Table({
     name: "restaurantSupplierList",
+    responsive: true,
     collection: Restaurant.Collection.Suppliers,
     columns: [
         {

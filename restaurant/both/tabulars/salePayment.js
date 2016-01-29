@@ -1,5 +1,6 @@
 Restaurant.TabularTable.SalePayments = new Tabular.Table({
     name: "restaurantSalePaymentList",
+    responsive: true,
     collection: Restaurant.Collection.Payments,
     columns: [
         // {data: "_id", title: "ID"},
@@ -18,14 +19,14 @@ Restaurant.TabularTable.SalePayments = new Tabular.Table({
         {data: "dueAmount", title: "Due"},
         {data: "payAmount", title: "Paid"},
         {data: "balanceAmount", title: "Balance"},
-        {
+        /*{
             data: "payments", title: "Payment",
             render: function (val, type, doc) {
                 return JSON.stringify(val);
             }
-        },
-        {data: "status", title: "Status"},
-        {data: "_branch.enName", title: "Branch"}
+        },*/
+        {data: "status", title: "Status"}
+        //{data: "_branch.enName", title: "Branch"}
     ],
     order: [['1', 'desc']]
     ,

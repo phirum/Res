@@ -1,5 +1,6 @@
 Restaurant.TabularTable.Staffs = new Tabular.Table({
     name: "restaurantStaffList",
+    responsive: true,
     collection: Restaurant.Collection.Staffs,
     columns: [
         {

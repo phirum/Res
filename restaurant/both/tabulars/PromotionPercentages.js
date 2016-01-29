@@ -1,5 +1,6 @@
 Restaurant.TabularTable.PromotionPercentages = new Tabular.Table({
     name: "restaurantPromotionPercentageList",
+    responsive: true,
     collection: Restaurant.Collection.PromotionPercentages,
     columns: [
         {

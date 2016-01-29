@@ -1,5 +1,6 @@
 Restaurant.TabularTable.PurchasePayments = new Tabular.Table({
     name: "restaurantPurchasePaymentList",
+    responsive: true,
     collection: Restaurant.Collection.Payments,
     columns: [
         // {data: "_id", title: "ID"},

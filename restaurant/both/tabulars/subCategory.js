@@ -1,5 +1,6 @@
 Restaurant.TabularTable.SubCategories = new Tabular.Table({
     name: "restaurantSubCategoryList",
+    responsive: true,
     collection: Restaurant.Collection.SubCategories,
     columns: [
         {data: "_id", title: "ID"},

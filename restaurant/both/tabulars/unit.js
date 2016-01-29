@@ -1,5 +1,6 @@
 Restaurant.TabularTable.Units = new Tabular.Table({
     name: "restaurantUnitList",
+    responsive: true,
     collection: Restaurant.Collection.Units,
     columns: [
         {

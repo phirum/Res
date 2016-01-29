@@ -1,5 +1,6 @@
 Restaurant.TabularTable.Locations = new Tabular.Table({
     name: "restaurantLocationList",
+    responsive: true,
     collection: Restaurant.Collection.Locations,
     columns: [
         {

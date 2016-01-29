@@ -1,5 +1,6 @@
 Restaurant.TabularTable.Sales = new Tabular.Table({
     name: "restaurantSaleList",
+    responsive: true,
     collection: Restaurant.Collection.Sales,
     columns: [
         {
@@ -14,7 +15,7 @@ Restaurant.TabularTable.Sales = new Tabular.Table({
         },
         {data: "_customer.name", title: "Customer"},
         {data: "_staff.name", title: "Staff"},
-        {data: "totalCost", title: "Total Cost"},
+        //{data: "totalCost", title: "Total Cost"},
         {data: "total", title: "Total"},
         //{data: "paidAmount", title: "Paid"},
         {data: "owedAmount", title: "Owed"},
@@ -24,8 +25,8 @@ Restaurant.TabularTable.Sales = new Tabular.Table({
             render: function (val, type, doc) {
                 return val ? "Retail" : "Wholesale";
             }
-        },
-        {data: "transactionType", title: "Sale Type"}
+        }
+        //{data: "transactionType", title: "Sale Type"}
 
 
     ],

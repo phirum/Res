@@ -1,5 +1,6 @@
 Restaurant.TabularTable.ExchangeRates = new Tabular.Table({
     name: "exchangeRateList",
+    responsive: true,
     collection: Restaurant.Collection.ExchangeRates,
     columns: [
         {data: "_id", title: "ID"},

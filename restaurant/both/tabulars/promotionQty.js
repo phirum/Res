@@ -1,5 +1,6 @@
 Restaurant.TabularTable.PromotionQuantities = new Tabular.Table({
     name: "restaurantPromotionQuantityList",
+    responsive: true,
     collection: Restaurant.Collection.PromotionQuantities,
     columns: [
         {
