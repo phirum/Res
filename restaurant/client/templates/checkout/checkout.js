@@ -1,6 +1,7 @@
 Session.setDefault('unitSession', null);
 var restaurantAddNoteTPL = Template.restaurant_addNote;
 Template.restaurant_checkout.onRendered(function () {
+    Meteor.typeahead.inject();
     createNewAlertify(["customer", "userStaff", "addNote"]);
     //$('#product-id').select2();
     $('#product-barcode').focus();
@@ -18,6 +19,33 @@ Template.restaurant_checkout.onRendered(function () {
     }, 500);
 });
 Template.restaurant_checkout.helpers({
+    search: function (query, sync, callback) {
+        Meteor.call('searchProduct', query, {}, function (err, res) {
+            if (err) {
+                console.log(err);
+                return;
+            }
+            callback(res);
+        });
+    },
+    selected: function (event, suggestion, dataSetName) {
+        // event - the jQuery event object
+        // suggestion - the suggestion object
+        // datasetName - the name of the dataset the suggestion belongs to
+        // TODO your event handler here
+        var id = suggestion._id;
+        $('.f' + id).addClass('flash-highlight');
+        var selector = {
+            _id: id
+        };
+        var data = getValidatedValues();
+        if (data.valid) {
+            checkBeforeAddOrUpdate(selector, data);
+        } else {
+            alertify.warning(data.message);
+        }
+
+    },
     isEmptyString: function (note) {
         return note == "" || note == null;
     },
@@ -123,7 +151,7 @@ Template.restaurant_checkout.helpers({
     },
     units: function () {
         return ReactiveMethod.call('findRecords',
-            'Restaurant.Collection.Units', {}, {sort:{name:1}});
+            'Restaurant.Collection.Units', {}, {sort: {name: 1}});
     },
     products: function () {
         var selector = {};
@@ -196,6 +224,10 @@ Template.restaurant_checkout.helpers({
     }
 });
 Template.restaurant_checkout.events({
+    'keypress .pay-amount': function (evt) {
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        return !(charCode > 31 && (charCode < 48 || charCode > 57));
+    },
     'click .category': function () {
         Session.set('categorySession', this._id);
     },
@@ -384,6 +416,9 @@ Template.restaurant_checkout.events({
         /*else {
          updateSaleSubTotal(FlowRouter.getParam('saleId'));
          }*/
+    },
+    'mouseleave #total_discount': function (e) {
+        $(e.currentTarget).change();
     },
     'change #total_discount': function (e) {
         var value = $(e.currentTarget).val();
