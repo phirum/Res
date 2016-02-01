@@ -89,6 +89,7 @@ function calculateSaleHelper(sl) {
                 grandTotalConvert[ex.toCurrencyId] = 0
             }
             grandTotalConvert[ex.toCurrencyId] += ex.exTotal;
+            ex.exTotalFormatted=numeral(ex.exTotal).format('0,0.00');
             s.exchangeRates.push(ex);
 
         });
@@ -104,7 +105,7 @@ function calculateSaleHelper(sl) {
     saleList.grandTotal = numeral(grandTotal).format('0,0.00');
     saleList.grandTotalConvert = [];
     for (var key in grandTotalConvert) {
-        saleList.grandTotalConvert.push({toCurrencyId: key, totalConvert: grandTotalConvert[key]});
+        saleList.grandTotalConvert.push({toCurrencyId: key, totalConvert:  numeral(grandTotalConvert[key]).format('0,0.00')});
     }
     /*$.each(grandTotalConvert,function(key,value){
      saleList.grandTotalConvert.push({toCurrencyId:key,totalConvert:value});
