@@ -37,7 +37,8 @@
                             </div>-->
                             <div class="col-lg-12">
                                 <ul>
-                                    <li role="presentation" class="all-category btn-category {{#if isAll}}active {{/if}}">
+                                    <li role="presentation"
+                                        class="all-category btn-category {{#if isAll}}active {{/if}}">
                                         <a role="tab" data-toggle="tab"
                                            aria-controls="home" aria-expanded="true">
                                             All
@@ -184,15 +185,14 @@
                                 <thead class="jumbotron">
                                 <tr>
                                     <th>Item</th>
-                                    <th class="align-center">Price</th>
-                                    <th class="align-center">Qty</th>
+                                    <th>Price</th>
+                                    <th>Qty</th>
                                     <!--<th class="align-center">Dis</th>-->
-                                    <th class="align-center">Amount</th>
+                                    <th>Amount</th>
                                     <th class="align-center">&nbsp;&nbsp;Action&nbsp;&nbsp;</th>
                                 </tr>
                                 </thead>
                                 <tbody class="align-center" id="product-list">
-
                                 {{#each saleDetails}}
                                     <tr class='{{setClass productId}} flash-highlight' data-id="{{_id}}">
                                         <td align="left">
@@ -203,7 +203,10 @@
                                                 <i class="fa fa-sticky-note add-note"></i>
                                             {{/if}}
                                         </td>
-                                        <td>{{price}}</td>
+                                        <td>
+                                            <input type="text" class="la-box price"
+                                                   value="{{price}}"/>
+                                        </td>
                                         <td class="{{toggleHighlight productId}}">{{quantity}}</td>
                                         <!--<td>{{discount}}</td>-->
                                         <td class="total-amount">{{amount}}</td>

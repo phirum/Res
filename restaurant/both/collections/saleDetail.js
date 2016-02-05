@@ -33,7 +33,7 @@ Restaurant.Schema.SaleDetails = new SimpleSchema({
         label:"Status"
     },
     note:{
-        type:String,
+        type:[String],
         label:"Note",
         optional:true
     },

@@ -18,3 +18,4 @@ Meteor.subscribe('restaurantUserStaff');
 Meteor.subscribe('images');
 Meteor.subscribe('adjustment');*/
 Meteor.subscribe('restaurantOwedSale');
+Meteor.subscribe('restaurantNote');

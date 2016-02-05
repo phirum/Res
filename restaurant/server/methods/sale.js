@@ -30,10 +30,13 @@ Meteor.methods({
     insertSaleDetails: function (obj) {
         Restaurant.Collection.SaleDetails.insert(obj);
     },
-    directUpdateSaleDetails: function (id, set) {
-        Restaurant.Collection.SaleDetails.direct.update(id, {$set: set});
+    directUpdateSaleDetails: function (id, set, unset) {
+        if (unset == null) {
+            unset = {};
+        }
+        Restaurant.Collection.SaleDetails.direct.update(id, {$set: set, $unset: unset});
     },
-    updateSaleDetails: function (id, set) {
+    updateSaleDetails: function (id, set, unset) {
         Restaurant.Collection.SaleDetails.update(id, {$set: set});
     },
     cancelSale: function (saleId) {

@@ -496,6 +496,16 @@ Restaurant.List = {
             value: 'Setting,Default',
             label: 'Setting And Default'
         }];
+    },
+    getNoteList: function(){
+        var list = [];
+        var notes = Restaurant.Collection.Notes.find();
+        if(notes) {
+            notes.forEach(function (note) {
+                list.push({label: note.name, value: note.name});
+            });
+        }
+        return list;
     }
 
 };

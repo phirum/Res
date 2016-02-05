@@ -229,6 +229,38 @@ Template.restaurant_checkout.helpers({
     }
 });
 Template.restaurant_checkout.events({
+    'keypress .price': function (evt) {
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if ($(evt.currentTarget).val().indexOf('.') != -1) {
+            if (charCode == 46) {
+                return false;
+            }
+        }
+        return !(charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57));
+    },
+    'click .price': function (e) {
+        $(e.currentTarget).select();
+    },
+    'change .price': function (e) {
+        var oldPrice = this.price;
+        var price = $(e.currentTarget).val();
+        if (price <= 0 || price == "") {
+            $(e.currentTarget).val(oldPrice);
+            $(e.currentTarget).focus();
+            $(e.currentTarget).select();
+            //alertify.warning("Price must be grater than 0");
+        } else {
+            var set = {};
+            set.price = price;
+            set.amount = (price * this.quantity) * (1 - this.discount / 100);
+            Meteor.call('updateSaleDetails', this._id, set, function (er, re) {
+                if (er) {
+                    alertify.error(er.message);
+                }
+            })
+        }
+
+    },
     'click .all-category': function () {
         Session.set('categorySession', 'All');
     },
@@ -316,8 +348,9 @@ Template.restaurant_checkout.events({
         clearDataFormPayment();
     },
     'click .add-note': function () {
+        var data = {saleDetailId: this._id, note: this.note};
         alertify.addNote(fa('pencil', 'Note'), renderTemplate(
-            restaurantAddNoteTPL, this));
+            restaurantAddNoteTPL,data));
     },
     'change #table-id': function (e) {
         var saleId = $('#sale-id').val();
@@ -563,7 +596,7 @@ function addOrUpdateProducts(branchId, saleId, product, saleObj) {
         saleDetailObj.amount = saleDetailObj.price;
         saleDetailObj.branchId = branchId;
         saleDetailObj.status = "Unsaved";
-        saleDetailObj.note = "";
+        saleDetailObj.note = [];
         Meteor.call('insertSaleAndSaleDetail', saleObj, saleDetailObj,
             function (error, saleId) {
                 if (saleId) {
@@ -601,7 +634,7 @@ function addOrUpdateProducts(branchId, saleId, product, saleObj) {
             saleDetailObj.amount = saleDetailObj.price;
             saleDetailObj.branchId = branchId;
             saleDetailObj.status = "Unsaved";
-            saleDetailObj.note = "";
+            saleDetailObj.note = [];
             Meteor.call('insertSaleDetails', saleDetailObj, function (error, result) {
                 if (error) alertify.error(error.message);
             });

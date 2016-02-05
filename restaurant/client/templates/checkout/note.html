@@ -1,4 +1,4 @@
-<template name="restaurant_addNote">
+<!--<template name="restaurant_addNote">
     <div class="form-horizontal">
         <div class="form-group">
             <label for="note" class="col-sm-2 control-label">Note</label>
@@ -12,4 +12,19 @@
             </div>
         </div>
     </div>
+</template>-->
+
+
+<template name="restaurant_addNote">
+    {{#autoForm schema=Restaurant.Schema.AddNoteForm id="restaurant_addNote" doc=this}}
+        <div class="row">
+            <div class="col-md-12">
+                {{> afQuickField name='saleDetailId'}}
+                {{> afQuickField name='note'}}
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="reset" class="btn btn-default">Reset</button>
+    {{/autoForm}}
 </template>
