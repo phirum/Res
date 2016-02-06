@@ -22,14 +22,14 @@ AutoForm.hooks({
     // Customer
     restaurant_addNote: {
         onSubmit: function (doc) {
-            var set = {};
-            var unset = {};
-            if (doc.note == "") {
-                unset.note = "";
+            var option = {};
+            debugger;
+            if (doc.note == "" || doc.note == null) {
+                option.$unset = {note: ""}
             } else {
-                set.note = doc.note;
+                option.$set = {note: doc.note};
             }
-            Meteor.call('directUpdateSaleDetails', doc.saleDetailId, set, unset, function (er, re) {
+            Meteor.call('directUpdateSaleDetailWithOption', doc.saleDetailId, option, function (er, re) {
                 if (er) {
                     alertify.error(er.message);
                 } else {
