@@ -20,6 +20,27 @@ restaurantShowTableTPL.events({
     'click .add-invoice': function () {
         Session.set('tableIdSession', this._id);
         FlowRouter.go('/restaurant/checkout');
+    },
+    'mouseenter .transfer': function(){
+      var saleId = this._id;
+      Meteor.call('findSales', saleId,function(err,result){
+        if(result){
+          console.log(result)
+          Session.set('salesList', result);
+        }
+      });
+    },
+    'click .select-table-id': function(e){
+        var fromId = $(e.currentTarget).parents('.dropdown-submenu').find('.transfer-id').text();
+        var toId = this._id;
+        Meteor.call('transferSaleDetail', fromId, toId, function (err, res) {
+            if(err){
+                alertify.error(err.message);
+            }else{
+                alertify.success('Successful Transfer to ' + toId);
+            }
+
+        });
     }
 });
 restaurantShowTableTPL.helpers({
@@ -29,5 +50,11 @@ restaurantShowTableTPL.helpers({
     hasSale: function (tableId) {
         var sale = Restaurant.Collection.Sales.findOne({tableId: tableId});
         return sale!=null;
+    },
+    salesList: function(){
+      var salesList = Session.get('salesList');
+      if(!_.isUndefined(salesList)){
+        return salesList;
+      }
     }
 });
