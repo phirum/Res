@@ -7,7 +7,7 @@
             <div class="dropdown">
                 <button class=" btn-cus  dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
-                        <i class="{{#if hasSale _id}} fa fa-cutlery{{/if}}"></i>
+                    <i class="{{#if hasSale _id}} fa fa-cutlery{{/if}}"></i>
                     Invoices
                     <span class="caret"></span>
                 </button>
@@ -15,7 +15,24 @@
                     <li class="add-invoice"><a>Add New Invoice</a></li>
                     <li role="separator" class="divider"></li>
                     {{#each sales}}
-                        <li><a href="/restaurant/checkout/{{_id}}">{{_id}} | {{_customer.name}}</a></li>
+                    <li class="dropdown-submenu">
+                        <a tabindex="-1" href="/restaurant/checkout/{{_id}}">{{_id}} | {{_customer.name}}</a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-submenu">
+                                <a href="#" class="transfer"><span class="hidden transfer-id">{{_id}}</span>Transfer to</a>
+                                <ul class="dropdown-menu">
+                                    <!-- <li><a href="#">3rd level</a></li>
+                                    <li><a href="#">3rd level</a></li> -->
+                                    {{#each salesList}}
+                                    <li>
+                                        <a href="#" class="select-table-id">{{_id}} | T{{_table.name}}</a>
+                                    </li>
+                                    {{/each}}
+                                </ul>
+                            </li>
+                        </ul>
+
+                    </li>
                     {{/each}}
                 </ul>
             </div>
