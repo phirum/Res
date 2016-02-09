@@ -4,7 +4,7 @@
         <div class="col-sm-6">
             <h3>From</h3>
             <select class="form-control" id="from-sale-id">
-                <option></option>
+                <option value="">(Please Select one)</option>
                 {{#each fromSales}}
                     <option value="{{_id}}">
                         {{_id}} | {{_customer.name}} | {{_table.name}}
@@ -27,7 +27,7 @@
         <div class="col-sm-6">
             <h3>To</h3>
             <select class="form-control" id="to-sale-id">
-                <option></option>
+                <option value="">(Please Select one)</option>
                 {{#each toSales}}
                     <option value="{{_id}}">
                         {{_id}} | {{_customer.name}} | {{_table.name}}
