@@ -22,7 +22,7 @@ restaurantRoutes.route('/invoiceTransfer', {
     breadcrumb: {
         //params: ['id'],
         //queryParams: ['show', 'color'],
-        title: 'InvoiceTransfer',
+        title: 'Items transfer',
         parent: 'restaurant.home'
     }
 });

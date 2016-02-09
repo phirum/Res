@@ -200,3 +200,13 @@ code {
 #pay-format {
     padding-right: 10px;
 }
+.cursor-p{
+  cursor: pointer;
+}
+
+.cursor-p:active{
+  cursor: move;
+  background: #4a148c;
+  color: #fff;
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+}

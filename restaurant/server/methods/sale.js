@@ -95,9 +95,6 @@ Meteor.methods({
         return list;
     },
     transferSaleAndSaleDetails: function (saleDetailId, fromSaleId, toSaleId) {
-        console.log('sd' + saleDetailId);
-        console.log('fromS' + fromSaleId);
-        console.log('toS' + toSaleId);
         Restaurant.Collection.SaleDetails.update(saleDetailId, {$set: {saleId: toSaleId}});
         Meteor.defer(function () {
             // Meteor._sleepForMs(500);

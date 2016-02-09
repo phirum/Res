@@ -11,12 +11,13 @@
                     </option>
                 {{/each}}
             </select>
+            <br>
             <div class="row">
                 <div class="col-sm-12">
-                    <ul id="from-sortable-sale" class="connectedSortable">
+                    <ul id="from-sortable-sale" class="list-group connectedSortable">
                         {{#each fromSaleDetails}}
-                            <li class="ui-state-default" id="{{_id}}">
-                                {{_product.name}}({{_product._unit.name}})-{{quantity}}
+                            <li class="cursor-p list-group-item ui-state-default" id="{{_id}}">
+                                {{_product.name}}({{_product._unit.name}}) | Qty:{{quantity}} | Price: {{price}}
                             </li>
                         {{/each}}
                     </ul>
@@ -33,12 +34,13 @@
                     </option>
                 {{/each}}
             </select>
+            <br>
             <div class="row">
                 <div class="col-sm-12">
-                    <ul id="to-sortable-sale" class="connectedSortable">
+                    <ul id="to-sortable-sale" class="list-group connectedSortable">
                         {{#each toSaleDetails}}
-                            <li class="ui-state-default" id="{{_id}}">
-                                {{_product.name}}({{_product._unit.name}})-{{quantity}}</li>
+                            <li class="cursor-p list-group-item ui-state-default" id="{{_id}}">
+                                {{_product.name}}({{_product._unit.name}}) | Qty:{{quantity}} | Price: {{price}}</li>
                         {{/each}}
                     </ul>
                 </div>
