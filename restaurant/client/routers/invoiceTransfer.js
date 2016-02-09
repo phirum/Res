@@ -4,11 +4,11 @@ restaurantRoutes.route('/invoiceTransfer', {
         var branchId = Session.get('currentBranch');
         this.register(
             'restaurant_sale',
-            Meteor.subscribe('restaurantSale', {branchId: branchId,status:"Unsaved"})
+            Meteor.subscribe('restaurantSale', {branchId: branchId, status: "Unsaved"})
         );
         this.register(
             'restaurant_saleDetail',
-            Meteor.subscribe('restaurantSaleDetail', {branchId: branchId,status:"Unsaved"})
+            Meteor.subscribe('restaurantSaleDetail', {branchId: branchId, status: "Unsaved"})
         );
         this.register(
             'restaurant_exchangeRate',
@@ -17,7 +17,7 @@ restaurantRoutes.route('/invoiceTransfer', {
     },
     action: function (params, queryParams) {
         //Layout.main('restaurant_checkout');
-        Layout.render('printLayout', 'restaurant_invoiceTransfer');
+        Layout.main('restaurant_invoiceTransfer');
     },
     breadcrumb: {
         //params: ['id'],
