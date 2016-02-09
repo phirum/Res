@@ -2,7 +2,8 @@ Template.restaurant_invoiceTransfer.onRendered(function () {
     /* $("#from-sortable-sale, #to-sortable-sale").sortable({
      connectWith: ".connectedSortable"
      }).disableSelection();*/
-
+     Session.set("fromSaleIdSession", undefined);
+     Session.set("toSaleIdSession", undefined);
 
     $('#from-sale-id').select2();
     $('#to-sale-id').select2();
