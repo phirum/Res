@@ -83,3 +83,18 @@ restaurantRoutes.route('/checkout/print/:saleId', {
      parent: 'restaurant.home'
      }*/
 });
+restaurantRoutes.route('/print/chef-print', {
+    name: 'restaurant.chefPrint',
+    subscriptions: function (params, queryParams) {
+    },
+    action: function (params, queryParams) {
+        Layout.render('printLayout', 'restaurant_chefPrint');
+    },
+    layoutTemplate: 'printLayout'
+    /* breadcrumb: {
+     //params: ['id'],
+     //queryParams: ['show', 'color'],
+     title: 'Checkout',
+     parent: 'restaurant.home'
+     }*/
+});
