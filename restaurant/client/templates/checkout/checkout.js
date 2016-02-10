@@ -502,7 +502,8 @@ Template.restaurant_checkout.events({
     var self = this;
     var tableName = $('#table-name').text();
     var notes = self.note.join(',');
-    var url = '/restaurant/print/chef-print?product=' + self._product.name + '(' + self._product._unit.name + ')' + '&qty=' + self.quantity + '&tbName=' + tableName+'&notes=' + notes;
+    var saleId = $('#sale-id').val();
+    var url = '/restaurant/print/chef-print?saleId=' + saleId + '&product=' + self._product.name + '(' + self._product._unit.name + ')' + '&qty=' + self.quantity + '&tbName=' + tableName+'&notes=' + notes;
     FlowRouter.go(url);
   }
 });
