@@ -1,0 +1,12 @@
+<template name="restaurant_chefPrint">
+  <div align='center'>
+    <div style="width:260px; font-size: 9px;">
+      {{#with data}}
+        តុលេខៈ <b>{{tbName}}</b>
+        <br> {{product}} ចំនួនៈ <b>{{qty}}</b>
+        <br>សំគាល់ៈ <b>{{notes}}</b>
+      {{/with}}
+    </div>
+  </div>
+  {{goBack data.saleId}}
+</template>
