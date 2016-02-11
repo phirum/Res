@@ -107,7 +107,16 @@ Template.restaurant_printCheckout.helpers({
             return false;
         }
         return call.result();
+    },
+    goBack: function (saleId, hasPayment) {
+      Meteor.setTimeout(function(){
+        window.print();
+        if(hasPayment){
+          window.close();
+        }else{
+          FlowRouter.go('/restaurant/checkout/' + saleId);
+        }
+      },1000);
     }
 
 });
-

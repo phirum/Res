@@ -430,8 +430,7 @@ Template.restaurant_checkout.events({
     var saleId = $('#sale-id').val();
     if (saleId == "") return;
     var url = $('#btn-print').attr('href');
-    window.open(url, '_blank');
-    prepareForm();
+    FlowRouter.go(url);
   },
   'click #suspend': function() {
     FlowRouter.go('restaurant.checkout');

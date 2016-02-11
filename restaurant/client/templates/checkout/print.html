@@ -116,9 +116,9 @@
 
             </div>
         {{/with}}
-        {{autoprint close="true"}}
+        {{goBack data.sale._id data.hasPayment}}
     {{else}}
-        {{> loading}}
+        {{>loading}}
     {{/if}}
 </template>
 <!--
