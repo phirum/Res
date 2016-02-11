@@ -180,13 +180,18 @@
                 </tr>
               </thead>
               <tbody class="align-center" id="product-list">
-                <span id="table-name">{{sale._table.name}}</span> {{#each saleDetails}}
+                <span id="table-name" class="hidden">{{sale._table.name}}</span> {{#each saleDetails}}
                 <tr class='{{setClass productId}} flash-highlight' data-id="{{_id}}">
                   <td align="left">
-                    {{_product.name}}({{_product._unit.name}}) {{#if isEmptyString note}}
-                    <i class="cursor-p fa fa-sticky-note-o add-note"></i> {{else}}
-                    <i class="cursor-p fa fa-sticky-note add-note"></i> {{/if}}
-                    <i class="fa fa-print cursor-p chef-print"></i>
+                    {{_product.name}}({{_product._unit.name}})
+                    {{#if isEmptyString note}}
+                      <i class="cursor-p fa fa-sticky-note-o add-note"></i>
+                    {{else}}
+                      <i class="cursor-p fa fa-sticky-note add-note"></i>
+                    {{/if}}
+                    {{#if hasPrint quantity qtyPrinted}}
+                      <i class="fa fa-print cursor-p chef-print"></i>
+                    {{/if}}
                   </td>
                   <td>
                     <input type="text" class="la-box price" value="{{price}}" />
@@ -197,9 +202,9 @@
                   <td>
                     <div class="btn-group btn-group-sm" role="group" aria-label="">
                       {{#if compareTwoValue quantity 1}}
-                      <button class="btn btn-warning btn-minus" disabled>-</button>
+                        <button class="btn btn-warning btn-minus" disabled>-</button>
                       {{else}}
-                      <button href="" class="btn btn-warning btn-minus">-</button>
+                        <button href="" class="btn btn-warning btn-minus">-</button>
                       {{/if}}
                       <button class="btn btn-primary btn-plus">+</button>
                       <button class="btn btn-danger btn-remove"><i class="fa fa-trash"></i></button>

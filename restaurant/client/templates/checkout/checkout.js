@@ -20,6 +20,16 @@ Template.restaurant_checkout.onRendered(function() {
   }, 500);
 });
 Template.restaurant_checkout.helpers({
+  hasPrint: function(quantity, qtyPrinted) {
+    if (qtyPrinted == 0) {
+      return true;
+    }
+    if (quantity - qtyPrinted == 0) {
+      return false
+    }else{
+      return true;
+    }
+  },
   isAll: function() {
     var categorySession = Session.get('categorySession');
     return categorySession == "All";
@@ -503,7 +513,9 @@ Template.restaurant_checkout.events({
     var tableName = $('#table-name').text();
     var notes = self.note.join(',');
     var saleId = $('#sale-id').val();
-    var url = '/restaurant/print/chef-print?saleId=' + saleId + '&product=' + self._product.name + '(' + self._product._unit.name + ')' + '&qty=' + self.quantity + '&tbName=' + tableName+'&notes=' + notes;
+    var qty = self.quantity - self.qtyPrinted;
+    Meteor.call('updateQtyPrinted', self._id, self.quantity);
+    var url = '/restaurant/print/chef-print?saleId=' + saleId + '&product=' + self._product.name + '(' + self._product._unit.name + ')' + '&qty=' + qty + '&tbName=' + tableName + '&notes=' + notes;
     FlowRouter.go(url);
   }
 });
