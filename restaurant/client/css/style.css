@@ -41,7 +41,7 @@
 }
 
 ul > li.btn-category {
-    display: inline;
+    display: inline-block;;
     background: #00796b;
     color: #fff;
     margin: 10px;

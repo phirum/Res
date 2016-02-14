@@ -510,7 +510,7 @@ Template.restaurant_checkout.events({
   'click .chef-print': function(e) {
     var self = this;
     var tableName = $('#table-name').text();
-    var notes = self.note.join(',');
+    var notes = self.note == null ? '' : self.note.join(',');
     var saleId = $('#sale-id').val();
     var qty = self.quantity - self.qtyPrinted;
     Meteor.call('updateQtyPrinted', self._id, self.quantity);
@@ -524,7 +524,8 @@ Template.restaurant_checkout.onDestroyed(function() {
 });
 
 Template.restaurant_showProduct.events({
-  'click .product-dev': function() {
+  'click .product-dev': function(e) {
+    e.preventDefault();
     var id = this._id;
     $('.f' + id).addClass('flash-highlight');
     var selector = {
