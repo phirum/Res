@@ -243,6 +243,17 @@ Template.restaurant_checkout.helpers({
   }
 });
 Template.restaurant_checkout.events({
+  'click #add-to-monitor': function(e){
+    e.preventDefault();
+    var saleId = $('#sale-id').val();
+    Meteor.call('addToMonitor', saleId, function(err,result){
+      if(err){
+        console.log(err);
+      }else{
+        alertify.success('Added ' + saleId + ' to Monitor');
+      }
+    });
+  },
   'keypress .price': function(evt) {
     var charCode = (evt.which) ? evt.which : evt.keyCode;
     if ($(evt.currentTarget).val().indexOf('.') != -1) {
@@ -516,6 +527,22 @@ Template.restaurant_checkout.events({
     Meteor.call('updateQtyPrinted', self._id, self.quantity);
     var url = '/restaurant/print/chef-print?saleId=' + saleId + '&product=' + self._product.name + '(' + self._product._unit.name + ')' + '&qty=' + qty + '&tbName=' + tableName + '&notes=' + notes;
     FlowRouter.go(url);
+  },
+  'click .monitor': function(e){
+    var saleDetailId = this._id;
+    Meteor.call("updateMonitor", saleDetailId, function(err,result){
+      if(err){
+        console.log(err)
+      }else{
+        Bert.alert({
+          title: 'Added to Monitor',
+          message: saleDetailId,
+          type: 'success',
+          style: 'growl-top-right',
+          icon: 'fa-check'
+        });
+      }
+    });
   }
 });
 

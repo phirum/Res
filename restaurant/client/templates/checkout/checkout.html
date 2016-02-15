@@ -189,9 +189,10 @@
                     {{else}}
                       <i class="cursor-p fa fa-sticky-note add-note"></i>
                     {{/if}}
-                    {{#if hasPrint quantity qtyPrinted}}
+                    <!-- {{#if hasPrint quantity qtyPrinted}}
                       <i class="fa fa-print cursor-p chef-print"></i>
-                    {{/if}}
+                    {{/if}} -->
+                    <i class="fa fa-desktop cursor-p monitor"></i>
                   </td>
                   <td>
                     <input type="text" class="la-box price" value="{{price}}" />
@@ -388,8 +389,8 @@
 
         <a href="/restaurant/checkout/print/{{sale._id}}" id="btn-print" class="btn hidden btn-primary" target="_blank"><i
                             class="fa fa-money"></i>&nbsp;Print</a>
-        <a id="print-invoice" class="btn btn-warning"><i
-                            class="fa fa-money"></i>&nbsp;Print</a>
+        <a id="add-to-monitor" class="btn btn-warning"><i
+                            class="fa fa-desktop"></i>&nbsp;Add to Monitor</a>
         <a id="save-without-pay" class="btn btn-primary"><i class="fa fa-save"></i> Save</a>
         <button type="button" class="btn btn-success" data-toggle="modal" id="btn-pay"><i class="fa fa-money"></i>&nbsp;Pay
         </button>

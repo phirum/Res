@@ -1,0 +1,36 @@
+<template name="restaurant_monitor">
+  <div class="container">
+    <div class="row">
+      <div class="timeline-centered">
+        <span class="pull-right">
+          <label class="btn btn-success active">
+  			  	<input type="checkbox" id="hideFinished" autocomplete="off" checked="{{hideFinishedFood}}">
+            Hide Finished Food
+  			  </label>
+        </span>
+        {{#each saleDetails}}
+          <article class="timeline-entry animated bounceInDown">
+            <div class="timeline-entry-inner">
+              <span class="isFinishing hidden">{{#if isFinishing}}true{{else}}false{{/if}}</span>
+              <time class="timeline-time" datetime=""><span>{{moFormat createdAt 'hh:mm A'}}</span> <span>{{livestamp createdAt}}</span></time>
+
+              <div class="timeline-icon bg-success">
+                <i class="entypo-feather">{{_sale._table.name}}</i>
+              </div>
+              <div class="timeline-label">
+                <h2><a href="#">{{saleId}}</a> <span class="pull-right">
+                <button type="submit" id="cooking" class="btn {{#if isCooking}}btn-primary{{else}}btn-default{{/if}}">{{#if isCooking}}<i class="fa fa-spinner fa-spin"></i>&nbsp;{{/if}}Cooking</button>
+                <button type="submit" id="cooking-done" class="btn {{#if isFinishing}}btn-success{{else}}btn-default{{/if}}">{{#if isFinishing}}<i class="fa fa-check"></i>&nbsp;{{/if}}Finish</button>
+                </span></h2>
+                <ul class="list-group">
+                    <li class="list-group-item {{#if isCooking}}border-dance{{/if}}{{#if isFinishing}}completed{{/if}}">{{_product.name}}({{_product._unit.name}}), <b>ចំនួនៈ </b>{{quantity}}{{#if note}}, <b>សំគាល់ៈ</b> {{note}}{{/if}}</li>
+                </ul>
+              </div>
+            </div>
+
+          </article>
+          {{/each}}
+      </div>
+    </div>
+  </div>
+</template>

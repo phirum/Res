@@ -43,41 +43,10 @@
                             href="{{pathFor 'restaurant.tableView'}}">
                         Table View</a>
                     </li>
-                    <!-- <li class="{{isActiveRoute name='restaurant.location'}}"><a
-                            href="{{pathFor 'restaurant.location'}}">
-                        Location</a>
-                    </li>
-                    <li class="{{isActiveRoute name='restaurant.locationSetting'}}"><a
-                            href="{{pathFor 'restaurant.locationSetting'}}">
-                        Location Setting</a>
-                    </li>
-                    <li class="{{isActiveRoute name='restaurant.locationTransfer'}}"><a
-                            href="{{pathFor 'restaurant.locationTransfer'}}">
-                        Location Transfer</a>
-                    </li>-->
                     <li class="{{isActiveRoute name='restaurant.salePayment'}}"><a
                             href="{{pathFor 'restaurant.salePayment'}}">
                         Sale Payment</a>
                     </li>
-                    <!--<li class="{{isActiveRoute name='restaurant.purchasePayment'}}"><a
-                            href="{{pathFor 'restaurant.purchasePayment'}}">
-                        Purchase Payment</a>
-                    </li>
-                    <li class="{{isActiveRoute name='restaurant.adjustment'}}"><a href="{{pathFor 'restaurant.adjustment'}}">
-                         Stock Adjustment</a>
-                    </li>-->
-                    <!--<li class="{{isActiveRoute name='restaurant.promotionQty'}}"><a href="{{pathFor 'restaurant.promotionQty'}}">
-                         Promotion Quantity
-                    </a>
-                    </li>
-                    <li class="{{isActiveRoute name='restaurant.promotionTotalAmount'}}"><a
-                            href="{{pathFor 'restaurant.promotionTotalAmount'}}">
-                         Promotion Total Amount</a>
-                    </li>
-                    <li class="{{isActiveRoute name='restaurant.promotionPercentage'}}"><a
-                            href="{{pathFor 'restaurant.promotionPercentage'}}">
-                         Promotion Percentage</a>
-                    </li>-->
                     <li class="divider"></li>
                     <li class="{{isActiveRoute name='restaurant.saleList'}}"><a
                             href="{{pathFor 'restaurant.saleList'}}">
@@ -88,6 +57,12 @@
                     <li class="{{isActiveRoute name='restaurant.invoiceTransfer'}}"><a
                             href="{{pathFor 'restaurant.invoiceTransfer'}}">
                         Items Transfer
+                        <!--<span class="label label-danger">{{getPublishedCount 'owedSale'}}</span>-->
+                    </a>
+                    </li>
+                    <li class="{{isActiveRoute name='restaurant.monitor'}}"><a
+                            href="{{pathFor 'restaurant.monitor'}}">
+                        Monitor
                         <!--<span class="label label-danger">{{getPublishedCount 'owedSale'}}</span>-->
                     </a>
                     </li>
