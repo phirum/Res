@@ -10,23 +10,22 @@ Template.restaurant_monitor.helpers({
     if (hideFinished) {
       selector.isFinishing = false;
     }
-    return Restaurant.Collection.SaleDetails.find(selector);
-  },
-  notify: function(tableId) {
-    Bert.alert({
-      title: 'Notify From Order',
-      message: tableId,
-      type: 'info',
-      style: 'growl-top-right',
-      icon: 'fa-cutlery'
-    });
-
+    var saleDetails = Restaurant.Collection.SaleDetails.find(selector);
+    return saleDetails;
   },
   hideFinishedFood: function() {
     return Session.get('hideFinished');
   },
   leftQuanity: function(quanity, cookQty) {
     return quanity - cookQty;
+  },
+  showNotify: function(notify, saleDetailId, productName, qty, tableName) {
+    if (notify) {
+      Meteor.call('updateNotify', saleDetailId);
+      alertify.set('notifier', 'position', 'top-left');
+      // alertify.success('Current position : ' +  alertify.get('notifier', 'position') + alertify.get('notifier-delay', 'delay'));
+      alertify.notify('តុលេខៈ​ ' + tableName + ', ' + productName + ', ចំនួនៈ​ ' + qty, 'custom', 2 + alertify.get('notifier', 'position'));
+    }
   }
 });
 
