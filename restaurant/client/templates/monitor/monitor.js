@@ -21,7 +21,10 @@ Template.restaurant_monitor.helpers({
   },
   showNotify: function(notify, saleDetailId, productName, qty, cookQty, tableName) {
     if (notify) {
+
       Meteor.call('updateNotify', saleDetailId);
+      var s = new buzz.sound('/sounds/iphone-notify.ogg');
+      s.play();
       alertify.set('notifier', 'position', 'top-left');
       // alertify.success('Current position : ' +  alertify.get('notifier', 'position') + alertify.get('notifier-delay', 'delay'));
       alertify.notify('តុលេខៈ​ ' + tableName + ', ' + productName + ', ចំនួនៈ​ ' + (qty - cookQty), 'custom', 2 + alertify.get('notifier', 'position'));
