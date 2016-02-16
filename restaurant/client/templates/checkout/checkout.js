@@ -392,7 +392,7 @@ Template.restaurant_checkout.events({
     var tableId = $(e.currentTarget).val();
     var set = {};
     set.tableId = tableId;
-    Meteor.call('directUpdateSale', saleId, set, function(er,
+    Meteor.call('updateSale', saleId, set, function(er,
       re) {
       if (er) alertify.error(er.message);
     });
@@ -404,7 +404,7 @@ Template.restaurant_checkout.events({
     var set = {
       customerId: customerId
     };
-    Meteor.call('directUpdateSale', saleId, set, function(er,
+    Meteor.call('updateSale', saleId, set, function(er,
       re) {
       if (er) alertify.error(er.message);
     });
@@ -416,7 +416,7 @@ Template.restaurant_checkout.events({
     var set = {
       staffId: staffId
     };
-    Meteor.call('directUpdateSale', saleId, set, function(er,
+    Meteor.call('updateSale', saleId, set, function(er,
       re) {
       if (er) alertify.error(er.message);
     });
