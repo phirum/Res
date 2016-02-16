@@ -49,6 +49,38 @@ Restaurant.Schema.SaleDetails = new SimpleSchema({
         return 0;
       }
     }
+  },
+  monitor: {
+    type: Boolean,
+    autoValue: function() {
+      if (this.isInsert) {
+        return false;
+      }
+    }
+  },
+  isCooking: {
+    type: Boolean,
+    autoValue: function() {
+      if (this.isInsert) {
+        return false;
+      }
+    }
+  },
+  isFinishing:{
+    type: Boolean,
+    autoValue: function() {
+      if (this.isInsert) {
+        return false;
+      }
+    }
+  },
+  cookQty: {
+      type: Number,
+      autoValue: function(){
+        if(this.isInsert){
+          return 0;
+        }
+      }
   }
 });
 Restaurant.Collection.SaleDetails.attachSchema(Restaurant.Schema.SaleDetails);

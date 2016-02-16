@@ -1,5 +1,8 @@
 Meteor.methods({
     //Sale
+    addToMonitor: function(saleId){
+      Restaurant.Collection.SaleDetails.direct.update({saleId: saleId}, {$set: {monitor: true}}, {multi: true})
+    },
     insertSaleAndSaleDetail: function (sale, saleDetail) {
         var todayDate = moment().format('YYYYMMDD');
         var prefix = sale.branchId + "-" + todayDate;

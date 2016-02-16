@@ -28,6 +28,17 @@ Restaurant.Collection.SaleDetails.after.update(function (userId, doc, fieldNames
      checkPromotion(doc, saleDate);
      });*/
 });
+Restaurant.Collection.SaleDetails.before.update(function(userId, doc, fieldNames, modifier, options){
+  var remain = modifier.$set.quantity - doc.cookQty;
+  if( remain > 0){
+    modifier.$set.isFinishing = false
+  }else if(remain == 0){
+    modifier.$set.isFinishing = true;
+    modifier.$set.isCooking = false
+  }else{
+    modifier.$set.cookQty = modifier.$set.quantity;
+  }
+});
 
 Restaurant.Collection.Sales.after.update(function (userId, doc, fieldNames, modifier, options) {
     updateSaleTotal(doc._id);

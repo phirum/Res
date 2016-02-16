@@ -26,7 +26,7 @@ Template.restaurant_checkout.helpers({
     }
     if (quantity - qtyPrinted == 0) {
       return false
-    }else{
+    } else {
       return true;
     }
   },
@@ -243,6 +243,23 @@ Template.restaurant_checkout.helpers({
   }
 });
 Template.restaurant_checkout.events({
+  'click #add-to-monitor': function(e) {
+    e.preventDefault();
+    var saleId = $('#sale-id').val();
+    Meteor.call('addToMonitor', saleId, function(err, result) {
+      if (err) {
+        console.log(err);
+      } else {
+        Bert.alert({
+          title: 'Added to Monitor',
+          message: saleId,
+          type: 'success',
+          style: 'growl-top-right',
+          icon: 'fa-check'
+        });
+      }
+    });
+  },
   'keypress .price': function(evt) {
     var charCode = (evt.which) ? evt.which : evt.keyCode;
     if ($(evt.currentTarget).val().indexOf('.') != -1) {
@@ -516,6 +533,42 @@ Template.restaurant_checkout.events({
     Meteor.call('updateQtyPrinted', self._id, self.quantity);
     var url = '/restaurant/print/chef-print?saleId=' + saleId + '&product=' + self._product.name + '(' + self._product._unit.name + ')' + '&qty=' + qty + '&tbName=' + tableName + '&notes=' + notes;
     FlowRouter.go(url);
+  },
+  'click .monitor': function(e) {
+    var saleDetailId = this._id;
+    var qty = this.quantity;
+    var product = this._product;
+    Meteor.call("updateMonitor", saleDetailId, true, function(err, result) {
+      if (err) {
+        console.log(err)
+      } else {
+        Bert.alert({
+          title: 'Added to Monitor',
+          message: product.name + ' ចំនួនៈ​ ' + qty,
+          type: 'success',
+          style: 'growl-top-right',
+          icon: 'fa-check'
+        });
+      }
+    });
+  },
+  'click .close-monitor': function(e) {
+    var saleDetailId = this._id;
+    var qty = this.quantity;
+    var product = this._product;
+    Meteor.call("updateMonitor", saleDetailId, false, function(err, result) {
+      if (err) {
+        console.log(err)
+      } else {
+        Bert.alert({
+          title: 'Disable From Monitor',
+          message: product.name + ' ចំនួនៈ​ ' + qty,
+          type: 'info',
+          style: 'growl-top-right',
+          icon: 'fa-check'
+        });
+      }
+    });
   }
 });
 

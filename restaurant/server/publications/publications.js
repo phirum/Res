@@ -43,9 +43,11 @@ Meteor.publish('restaurantProduct', function (selector) {
     }
 });
 Meteor.publish('restaurantSale', function (selector) {
+    console.log(selector);
     if (this.userId) {
         selector = selector == null ? {} : selector;
-        return Restaurant.Collection.Sales.find(selector);
+        var sales = Restaurant.Collection.Sales.find(selector);
+        return sales;
     }
 });
 Meteor.publish('restaurantSaleDetail', function (selector) {
