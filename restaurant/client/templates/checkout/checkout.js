@@ -534,7 +534,7 @@ Template.restaurant_checkout.events({
     var url = '/restaurant/print/chef-print?saleId=' + saleId + '&product=' + self._product.name + '(' + self._product._unit.name + ')' + '&qty=' + qty + '&tbName=' + tableName + '&notes=' + notes;
     FlowRouter.go(url);
   },
-  'click .monitor': function(e) {
+  'click .monitor,.add-product-monitor': function(e) {
     var saleDetailId = this._id;
     var qty = this.quantity;
     var product = this._product;
@@ -552,7 +552,7 @@ Template.restaurant_checkout.events({
       }
     });
   },
-  'click .close-monitor': function(e) {
+  'click .close-monitor,.close-product-monitor': function(e) {
     var saleDetailId = this._id;
     var qty = this.quantity;
     var product = this._product;

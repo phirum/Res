@@ -183,20 +183,25 @@
                 <span id="table-name" class="hidden">{{sale._table.name}}</span> {{#each saleDetails}}
                 <tr class='{{setClass productId}} flash-highlight' data-id="{{_id}}">
                   <td align="left">
-                    {{_product.name}}({{_product._unit.name}})
-                    {{#if isEmptyString note}}
-                      <i class="cursor-p fa fa-sticky-note-o add-note"></i>
-                    {{else}}
-                      <i class="cursor-p fa fa-sticky-note add-note"></i>
-                    {{/if}}
-                    <!-- {{#if hasPrint quantity qtyPrinted}}
-                      <i class="fa fa-print cursor-p chef-print"></i>
-                    {{/if}} -->
-                    {{#if monitor}}
-                      <i style="color: #d32f2f;" class="fa fa-desktop cursor-p close-monitor"></i>
-                    {{else}}
-                      <i class="fa fa-desktop cursor-p monitor"></i>
-                    {{/if}}
+                    <span class="cursor-p ripple-span {{#if monitor}}close-product-monitor{{else}}add-product-monitor{{/if}}">
+                      {{_product.name}}({{_product._unit.name}})
+                    </span>
+                    <br><br>
+                    <span align="center">
+                      {{#if isEmptyString note}}
+                        &nbsp;&nbsp;<i class="cursor-p fa fa-sticky-note-o add-note" align="center"></i>
+                      {{else}}
+                        &nbsp;&nbsp;<i class="cursor-p fa fa-sticky-note add-note" align="center"></i>
+                      {{/if}}
+                      <!-- {{#if hasPrint quantity qtyPrinted}}
+                        <i class="fa fa-print cursor-p chef-print"></i>
+                      {{/if}} -->
+                      {{#if monitor}}
+                        &nbsp;&nbsp;<i style="color: #d32f2f;" class="fa fa-desktop cursor-p close-monitor"></i>
+                      {{else}}
+                        &nbsp;&nbsp;<i class="fa fa-desktop cursor-p monitor"></i>
+                      {{/if}}
+                    </span>
                   </td>
                   <td>
                     <input type="text" class="la-box price" value="{{price}}" />
