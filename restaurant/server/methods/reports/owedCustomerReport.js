@@ -50,6 +50,9 @@ Meteor.methods({
         sales.forEach(function (s) {
             s.saleDate = moment(s.saleDate).format("DD-MM-YYYY HH:mm:ss");
             s.order = i;
+            s.paidAmount = numeral(s.total - s.owedAmount).format('0,0.00');
+            s.total = numeral(s.total).format('0,0.00');
+            s.owedAmount = numeral(s.owedAmount).format('0,0.00');
             i++;
             content.push(s);
         });

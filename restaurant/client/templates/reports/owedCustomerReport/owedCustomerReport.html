@@ -60,7 +60,7 @@
                 <td>{{saleId}}</td>
                 <td>{{paymentDate}}</td>
                 <td>{{customerName}}</td>
-                <td>{{balanceAmount}}</td>
+                <td align="right">{{balanceAmount}}</td>
             </tr>
         {{/each}}
         </tbody>
@@ -118,11 +118,11 @@
                     <tbody class="content-body">
                     {{#each content}}
                         <tr>
-                            <td>{{order}}</td>
+                            <td align="center">{{order}}</td>
                             <td>{{_id}}</td>
                             <td>{{saleDate}}</td>
                             <td>{{_customer.name}}</td>
-                            <td>{{owedAmount}}</td>
+                            <td align="right">{{owedAmount}}</td>
                         </tr>
                     {{/each}}
                     </tbody>
