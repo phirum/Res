@@ -9,11 +9,19 @@
   			  </label>
         </span>
         {{#each saleDetails}}
-        {{showNotify notify _id _product.name  quantity _sale._table.name}}
+        {{showNotify notify _id _product.name  quantity cookQty _sale._table.name}}
           <article class="timeline-entry animated bounceInDown">
             <div class="timeline-entry-inner">
               <span class="isFinishing hidden">{{#if isFinishing}}true{{else}}false{{/if}}</span>
-              <time class="timeline-time" datetime=""><span>{{moFormat updatedAt 'hh:mm A'}}</span> <span>{{livestamp updatedAt}}</span></time>
+              <time class="timeline-time" datetime="">
+                {{#if updatedAt}}
+                  <span>{{moFormat updatedAt 'hh:mm A'}}</span>
+                  <span>{{livestamp updatedAt}}</span>
+                {{else}}
+                  <span>{{moFormat createdAt 'hh:mm A'}}</span>
+                  <span>{{livestamp createdAt}}</span>
+                {{/if}}
+              </time>
 
               <div class="timeline-icon bg-success">
                 <i class="entypo-feather">{{_sale._table.name}}</i>
