@@ -192,7 +192,11 @@
                     <!-- {{#if hasPrint quantity qtyPrinted}}
                       <i class="fa fa-print cursor-p chef-print"></i>
                     {{/if}} -->
-                    <i class="fa fa-desktop cursor-p monitor"></i>
+                    {{#if monitor}}
+                      <i style="color: #d32f2f;" class="fa fa-desktop cursor-p close-monitor"></i>
+                    {{else}}
+                      <i class="fa fa-desktop cursor-p monitor"></i>
+                    {{/if}}
                   </td>
                   <td>
                     <input type="text" class="la-box price" value="{{price}}" />

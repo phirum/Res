@@ -223,6 +223,7 @@
   animation-iteration-count: infinite;
   animation-direction: alternate;
 }
+
 @-webkit-keyframes color_change {
   from {
     background-color: #00897b;

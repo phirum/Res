@@ -24,18 +24,21 @@ Template.restaurant_monitor.helpers({
   },
   hideFinishedFood: function() {
     return Session.get('hideFinished');
+  },
+  leftQuanity: function(quanity, cookQty) {
+    return quanity - cookQty;
   }
 });
 
 Template.restaurant_monitor.events({
   "click #cooking": function(event) {
-    Meteor.call('updateCooking', this._id, 'cooking', this.isCooking, this.isFinishing);
+    Meteor.call('updateCooking', this._id, 'cooking', 0, this.isCooking, this.isFinishing);
   },
   "click #cooking-done": function(e) {
-    Meteor.call('updateCooking', this._id, 'finishing', this.isCooking, this.isFinishing);
+    Meteor.call('updateCooking', this._id, 'finishing', this.quantity, this.isCooking, this.isFinishing);
   },
   "click #hideFinished": function(e) {
-      var val = $(e.currentTarget).prop('checked');
-      Session.set('hideFinished', val)
+    var val = $(e.currentTarget).prop('checked');
+    Session.set('hideFinished', val)
   }
 });

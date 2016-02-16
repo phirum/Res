@@ -73,7 +73,14 @@ Restaurant.Schema.SaleDetails = new SimpleSchema({
         return false;
       }
     }
+  },
+  cookQty: {
+      type: Number,
+      autoValue: function(){
+        if(this.isInsert){
+          return 0;
+        }
+      }
   }
-
 });
 Restaurant.Collection.SaleDetails.attachSchema(Restaurant.Schema.SaleDetails);

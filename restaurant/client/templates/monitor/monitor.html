@@ -12,7 +12,7 @@
           <article class="timeline-entry animated bounceInDown">
             <div class="timeline-entry-inner">
               <span class="isFinishing hidden">{{#if isFinishing}}true{{else}}false{{/if}}</span>
-              <time class="timeline-time" datetime=""><span>{{moFormat createdAt 'hh:mm A'}}</span> <span>{{livestamp createdAt}}</span></time>
+              <time class="timeline-time" datetime=""><span>{{moFormat updatedAt 'hh:mm A'}}</span> <span>{{livestamp updatedAt}}</span></time>
 
               <div class="timeline-icon bg-success">
                 <i class="entypo-feather">{{_sale._table.name}}</i>
@@ -23,7 +23,7 @@
                 <button type="submit" id="cooking-done" class="btn {{#if isFinishing}}btn-success{{else}}btn-default{{/if}}">{{#if isFinishing}}<i class="fa fa-check"></i>&nbsp;{{/if}}Finish</button>
                 </span></h2>
                 <ul class="list-group">
-                    <li class="list-group-item {{#if isCooking}}border-dance{{/if}}{{#if isFinishing}}completed{{/if}}">{{_product.name}}({{_product._unit.name}}), <b>ចំនួនៈ </b>{{quantity}}{{#if note}}, <b>សំគាល់ៈ</b> {{note}}{{/if}}</li>
+                    <li class="list-group-item {{#if isCooking}}border-dance{{/if}}{{#if isFinishing}}completed{{/if}}">{{_product.name}}({{_product._unit.name}}), <b>ចំនួនៈ </b>{{quantity}}{{#if note}}, <b>សំគាល់ៈ</b> {{note}}{{/if}}, {{#if isCooking}}<b>កំពុងចម្អិន</b>{{else}}<b>ចំនួននៅសល់ៈ​ </b>{{leftQuanity quantity cookQty}}{{/if}}</li>
                 </ul>
               </div>
             </div>
