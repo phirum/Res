@@ -51,5 +51,20 @@ Restaurant.Schema.SaleReport = new SimpleSchema({
             }
         },
         optional: true
+    },
+    status: {
+        type: String,
+        label: "Status",
+        autoform: {
+            type: "select2",
+            options: function () {
+                return [
+                    {value: '', label: 'All'},
+                    {value: 'Owed', label: 'Owed'},
+                    {value: 'Paid', label: 'Paid'}
+                ]
+            }
+        },
+        optional:true
     }
 });

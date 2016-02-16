@@ -25,7 +25,7 @@ Meteor.methods({
         }
         /****** Title *****/
         data.title = Cpanel.Collection.Company.findOne();
-        var staff = "All", customer = "All", location = "All";
+        var staff = "All", customer = "All", location = "All", status = "All";
         if (fromDate != null && toDate != null) params.saleDate = {$gte: fromDate, $lte: toDate};
         if (customerId != null && customerId != "") {
             params.customerId = customerId;
@@ -39,8 +39,14 @@ Meteor.methods({
             params.locationId = locationId;
             location = Restaurant.Collection.Locations.findOne(locationId).name;
         }
+        if (arg.status != null && arg.status != "") {
+            params.status = arg.status;
+            status = arg.status;
+        } else {
+            params.status = {$ne: "Unsaved"};
+        }
         params.branchId = {$in: branchIds};
-        params.status = {$ne: "Unsaved"};
+
         //params.transactionType = "Sale";
         //params.status = "Owed";
         var sale = Restaurant.Collection.Sales.find(params);
@@ -55,10 +61,13 @@ Meteor.methods({
         header.location = location;
         header.staff = staff;
         header.customer = customer;
+        header.status = status;
 
         /****** Header *****/
         data.header = header;
         var content = calculateSaleHelper(sale);
+        data.grandTotalPaidAmount = content.grandTotalPaidAmount;
+        data.grandTotalOwedAmount = content.grandTotalOwedAmount;
         data.grandTotal = content.grandTotal;
         //data.grandTotalCost = content.grandTotalCost;
         data.grandTotalConvert = content.grandTotalConvert;
@@ -73,13 +82,15 @@ Meteor.methods({
 
 function calculateSaleHelper(sl) {
     var grandTotal = 0;
-   // var grandTotalCost = 0;
+    // var grandTotalCost = 0;
+    var grandTotalOwedAmount = 0;
     var grandTotalConvert = {};
     var saleList = [];
     var i = 1;
     sl.forEach(function (s) {
         grandTotal += s.total;
-       // grandTotalCost += s.totalCost;
+        grandTotalOwedAmount += s.owedAmount;
+        // grandTotalCost += s.totalCost;
         s.order = i;
         s.exchangeRates = [];
         var exchange = Restaurant.Collection.ExchangeRates.findOne(s.exchangeRateId);
@@ -89,12 +100,14 @@ function calculateSaleHelper(sl) {
                 grandTotalConvert[ex.toCurrencyId] = 0
             }
             grandTotalConvert[ex.toCurrencyId] += ex.exTotal;
-            ex.exTotalFormatted=numeral(ex.exTotal).format('0,0.00');
+            ex.exTotalFormatted = numeral(ex.exTotal).format('0,0.00');
             s.exchangeRates.push(ex);
 
         });
         s.saleDate = moment(s.saleDate).format("DD-MM-YY, HH:mm");
+        s.paidAmount = numeral(s.total - s.owedAmount).format('0,0.00');
         s.total = numeral(s.total).format('0,0.00');
+        s.owedAmount = numeral(s.owedAmount).format('0,0.00');
         //s.totalCost = numeral(s.totalCost).format('0,0.00');
         s.customer = Restaurant.Collection.Customers.findOne(s.customerId).name;
         s.staff = Restaurant.Collection.Staffs.findOne(s.staffId).name;
@@ -102,10 +115,15 @@ function calculateSaleHelper(sl) {
         saleList.push(s);
     });
     //saleList.grandTotalCost = numeral(grandTotalCost).format('0,0.00');
+    saleList.grandTotalPaidAmount = numeral(grandTotal - grandTotalOwedAmount).format('0,0.00');
+    saleList.grandTotalOwedAmount = numeral(grandTotalOwedAmount).format('0,0.00');
     saleList.grandTotal = numeral(grandTotal).format('0,0.00');
     saleList.grandTotalConvert = [];
     for (var key in grandTotalConvert) {
-        saleList.grandTotalConvert.push({toCurrencyId: key, totalConvert:  numeral(grandTotalConvert[key]).format('0,0.00')});
+        saleList.grandTotalConvert.push({
+            toCurrencyId: key,
+            totalConvert: numeral(grandTotalConvert[key]).format('0,0.00')
+        });
     }
     /*$.each(grandTotalConvert,function(key,value){
      saleList.grandTotalConvert.push({toCurrencyId:key,totalConvert:value});

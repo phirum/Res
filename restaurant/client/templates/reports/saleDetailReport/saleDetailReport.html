@@ -65,19 +65,19 @@
                     <tbody class="content-body">
                     {{#each content}}
                         <tr>
-                            <td>{{order}}</td>
+                            <td align="center">{{order}}</td>
                             <td>{{productName}}</td>
                             <td>{{quantity}}</td>
-                            <!--<td>{{totalCost}}</td>-->
-                            <td>{{total}}</td>
+                            <!--<td align="right">{{totalCost}}</td>-->
+                            <td align="right">{{total}}</td>
                         </tr>
                     {{/each}}
                     </tbody>
                     <tbody>
                     <tr class="content-body" style="background: #ffff00">
                         <td colspan="3" style="text-align: right">Grand Total:</td>
-                        <!--<td>{{grandTotalCost}}</td>-->
-                        <td>{{grandTotal}}</td>
+                        <!--<td align="right">{{grandTotalCost}}</td>-->
+                        <td align="right">{{grandTotal}}</td>
                     </tr>
                     </tbody>
                 </table>
