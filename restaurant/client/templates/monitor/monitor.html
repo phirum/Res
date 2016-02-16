@@ -9,6 +9,7 @@
   			  </label>
         </span>
         {{#each saleDetails}}
+        {{showNotify notify _id _product.name  quantity _sale._table.name}}
           <article class="timeline-entry animated bounceInDown">
             <div class="timeline-entry-inner">
               <span class="isFinishing hidden">{{#if isFinishing}}true{{else}}false{{/if}}</span>
