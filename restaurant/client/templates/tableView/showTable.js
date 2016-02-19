@@ -10,7 +10,7 @@ restaurantShowTableTPL.onRendered(function () {
         stop: function (evt, ui) {
             var left = ui.position.left;
             var top = ui.position.top;
-            Restaurant.Collection.Tables.update($(this).attr('id'), {$set: {left: left, top: top}});
+            Restaurant.Collection.Tables.direct.update($(this).attr('id'), {$set: {left: left, top: top}});
         }
     });
     $('[data-toggle="popover"]').popover();
