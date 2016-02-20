@@ -12,5 +12,8 @@ Meteor.methods({
       Restaurant.Collection.Sales.remove(fromId);
     });
 
-  }
+  },
+  directUpdateTable:function(id,set){
+	Restaurant.Collection.Tables.direct.update(id,{$set:set});
+ }
 });

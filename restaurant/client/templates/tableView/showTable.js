@@ -10,7 +10,11 @@ restaurantShowTableTPL.onRendered(function () {
         stop: function (evt, ui) {
             var left = ui.position.left;
             var top = ui.position.top;
-            Restaurant.Collection.Tables.direct.update($(this).attr('id'), {$set: {left: left, top: top}});
+		var set={left: left, top: top};
+	Meteor.call('directUpdateTable',$(this).attr('id'),set,function(er,re){
+		if(er) alertify.error(er.message);
+	})
+           // Restaurant.Collection.Tables.direct.update($(this).attr('id'), {$set: {left: left, top: top}});
         }
     });
     $('[data-toggle="popover"]').popover();
